@@ -1,6 +1,8 @@
 # MVC_BP
 Business Pro Prueba
 
+## Si deseas obtener la base de datos clickea aquí --> https://drive.google.com/drive/folders/1epOKknYKRNubTj2w_VJQnVadmM_2NlRN?usp=sharing
+
 ## Documentacion de Funcionalidad
 
 En esta pantalla se observa una lista de ARTICULOS ACTIVOS, la cual muestra datos de proveedores,
