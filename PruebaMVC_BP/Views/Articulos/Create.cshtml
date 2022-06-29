@@ -1,0 +1,63 @@
+﻿@using ORM;
+@using ORM.Entities;
+@model Articulos
+@{
+    ViewData["Title"] = "Registrar Artículo";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        Favor revisar la informacion solicitada
+    </div>
+}
+
+<div class="row">
+    <div class="col-6">
+        <form method="post" autocomplete="off">
+
+            <div class="form-group">
+                <label for="CodArticulo">Código Artículo</label>
+                <input asp-for="CodArticulo" class="form-control" />
+                <span asp-validation-for="CodArticulo" class="text-danger small"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="Nombre">Nombre Artículo</label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger small"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="Estado">Estado</label>
+                <select asp-for="Estado" class="form-control">
+                    <option value="">-Seleccione-</option>
+                    <option value="Activo">Activo</option>
+                    <option value="Inactivo">Inactivo</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Costo">Costo</label>
+                <input asp-for="Costo" class="form-control" />
+                <span asp-validation-for="Costo" class="text-danger small"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="IdProveedor">Nombre Proveedor</label>
+                <select asp-for="IdProveedor" class="form-control" asp-items="@(new SelectList(ViewBag.Proveedores, "IdProveedor", "Nombre"))">
+                    <option>Seleccione</option>
+                </select>
+                <span asp-validation-for="IdProveedor" class="text-danger small"></span>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a asp-controller="Articulos" asp-action="Index" class="btn btn-secondary">Regresar</a>
+            </div>
+
+        </form>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+﻿@using ORM
+@using ORM.Entities;
+
+@model Proveedores
+@{
+    ViewData["Title"] = "Modificar Proveedor";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        Favor revisar la informacion solicitada
+    </div>
+}
+
+<div class="row">
+    <div class="col-6">
+        <form method="post" autocomplete="off">
+
+            <div class="form-group">
+                <label for="CodProveedor">Código Proveedor</label>
+                <input asp-for="CodProveedor" class="form-control" />
+                <span asp-validation-for="CodProveedor" class="text-danger small"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="Nombre">Nombre Proveedor</label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger small"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="Estado">Estado</label>
+                <select asp-for="Estado" class="form-control">
+                    <option value="">-Seleccione-</option>
+                    <option value="Activo">Activo</option>
+                    <option value="Inactivo">Inactivo</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Cedula">Cédula</label>
+                <input asp-for="Cedula" class="form-control" />
+                <span asp-validation-for="Cedula" class="text-danger small"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="Direccion">Dirección</label>
+                <input asp-for="Direccion" class="form-control" />
+                <span asp-validation-for="Direccion" class="text-danger small"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="Telefono">Teléfono</label>
+                <input asp-for="Telefono" class="form-control" />
+                <span asp-validation-for="Telefono" class="text-danger small"></span>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a asp-controller="Proveedores" asp-action="Index" class="btn btn-secondary">Regresar</a>
+            </div>
+
+        </form>
+    </div>
+</div>

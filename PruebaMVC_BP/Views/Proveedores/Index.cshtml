@@ -1,0 +1,40 @@
+﻿@using ORM;
+@using ORM.Entities;
+@{
+    ViewData["Title"] = "Proveedores";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<a class="btn btn-primary mb-3 float-right" asp-controller="Proveedores" asp-action="Create">Nuevo Proveedor</a>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Código Proveedor</th>
+            <th scope="col">Nombre Proveedor</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Cédula</th>
+            <th scope="col">Dirección</th>
+            <th scope="col">Teléfono</th>
+            <th scope="col">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Proveedores _Prov in ViewBag.Proveedores)
+        {
+        <tr>
+            <td>@_Prov.CodProveedor</td>
+            <td>@_Prov.Nombre</td>
+            <td>@_Prov.Estado</td>
+            <td>@_Prov.Cedula</td>
+            <td>@_Prov.Direccion</td>
+            <td>@_Prov.Telefono</td>
+            <td width="220px">
+                <a class="btn btn-primary" asp-controller="Proveedores" asp-action="Edit" asp-route-IdProveedor="@_Prov.IdProveedor">Modificar</a>
+                <a class="btn btn-danger" asp-controller="Proveedores" asp-action="Delete" asp-route-Id="@_Prov.IdProveedor">Eliminar</a>
+            </td>
+        </tr>
+        }
+
+    </tbody>
+</table>

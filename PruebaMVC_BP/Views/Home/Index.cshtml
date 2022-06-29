@@ -1,0 +1,45 @@
+﻿@using ORM;
+@using ORM.SP;
+@using ORM.Entities;
+@{
+    ViewData["Title"] = "Lista de Artículos Activos";
+}
+<script>
+function printpage() {
+
+        var printButton = document.getElementById("printpagebutton");
+
+        printButton.style.visibility = 'hidden';
+
+        window.print()
+        printButton.style.visibility = 'visible';
+    }
+</script>
+
+
+<h1>@ViewData["Title"]</h1>
+<input id="printpagebutton" value="Imprimir Listado" type="button" class="btn btn-primary mb-3 float-right" onclick="printpage()"/>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Código Artículo</th>
+            <th scope="col">Nombre Artículo</th>
+            <th scope="col">Costo</th>
+            <th scope="col">Código Proveedor</th>
+            <th scope="col">Nombre Proveedor</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (sp_lista_articulos_activos _arti in ViewBag.ListaCombinada)
+        {
+        <tr>
+            <td scope="row">@_arti.cod_articulo</td>
+            <td>@_arti.nombreA</td>
+            <td>@_arti.costo</td>
+            <td>@_arti.cod_proveedor</td>
+            <td>@_arti.nombreP</td>
+        </tr>
+        }
+
+    </tbody>
+</table>

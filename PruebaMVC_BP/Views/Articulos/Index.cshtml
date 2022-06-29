@@ -1,0 +1,38 @@
+﻿@using ORM;
+@using ORM.Entities;
+@{
+    ViewData["Title"] = "Artículos";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<a class="btn btn-primary mb-3 float-right" asp-controller="Articulos" asp-action="Create">Nuevo Artículo</a>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Código Artículo</th>
+            <th scope="col">Nombre Artículo</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Costo</th>
+            <th scope="col">Nombre Proveedor</th>
+            <th scope="col">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Articulos _arti in ViewBag.Articulos)
+        {
+        <tr>
+            <td scope="row">@_arti.CodArticulo</td>
+            <td>@_arti.Nombre</td>
+            <td>@_arti.Estado</td>
+            <td>@_arti.Costo</td>
+            <td>@_arti.IdProveedorNavigation.Nombre</td> @*aqui se accede a la tabla relacionada desde la llave foranea hasta proveedores y accede al dato que deseo traer*@
+            <td width="220px">
+                <a class="btn btn-primary" asp-controller="Articulos" asp-action="Edit" asp-route-IdArticulo="@_arti.IdArticulo">Modificar</a>
+                <a class="btn btn-danger" asp-controller="Articulos" asp-action="Delete" asp-route-Id="@_arti.IdArticulo">Eliminar</a>
+            </td>
+        </tr>
+        }
+
+    </tbody>
+</table>
